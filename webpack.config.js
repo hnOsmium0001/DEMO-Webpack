@@ -10,6 +10,8 @@ function execute(commands) {
   });
 }
 
+const REPO_URL = 'https://github.com/hnOsmium0001/DEMO-Webpack.git';
+
 module.exports = env => {
   return {
     entry: './src/index.js',
@@ -36,17 +38,7 @@ module.exports = env => {
             }
 
             if (env.commit) {
-              execute([
-                'echo "-------- Github Pages --------"',
-                'cd ./Builds',
-                'git add *',
-                `git commit -m "Build ${new Date().toString()}"`,
-                'git push origin gh-pages',
-                'cd -',
-                'echo ""',
-                'echo "Please push to origin after this build"',
-                'echo "-------- Github Pages --------"'
-              ]);
+              execute([`bash ./build.sh ${REPO_URL}`]);
             }
           });
         }

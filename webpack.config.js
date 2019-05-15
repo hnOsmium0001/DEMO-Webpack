@@ -17,7 +17,7 @@ module.exports = env => {
     entry: './src/index.js',
     output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, './Builds')
+      path: path.resolve(__dirname, './dist')
     },
     module: {
       rules: [
@@ -38,7 +38,7 @@ module.exports = env => {
             }
 
             if (env.commit) {
-              execute([`bash ./build.sh ${REPO_URL}`]);
+              execute([`bash ./build.sh "${REPO_URL}" "${new Date().toString()}"`]);
             }
           });
         }
